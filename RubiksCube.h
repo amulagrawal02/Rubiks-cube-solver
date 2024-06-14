@@ -1,6 +1,7 @@
 // this is the generic class which contain the comman components of rubiks cube. 
 // despite of type of solver we use or type of model we use. 
 
+
 #include<bits/stdc++.h>
 using namespace std; 
 
@@ -43,10 +44,12 @@ class RubiksCube{
     // random suffle fucntion 
     // function returns us the types of moves we have to perform to suffle the cube.  
     // times represent = no. of moves me make 
-    virtual vector<MOVE> randomSuffle(int times);
+  //  virtual vector<MOVE> randomSuffle(int times);
 
     // given a rubiks cube and print the cube in planar form. 
-    virtual void printRubikCube(); 
+    /* As you know the printRubikCube it's common for all types of model, but instead of creating it's 
+    virtual we create help function virtual */
+    void printRubikCube(); 
 
     /*
      * Returns the color of the cell at (row, col) in face.
@@ -56,10 +59,11 @@ class RubiksCube{
      * @param Face, row, and column index
      */ 
 
-    virtual COLOR getColor(FACE f, int row, int col);
+    virtual COLOR getColor(FACE f, int row, int col)const = 0;
 
-    char getColorLetter(COLOR c);
+    char getColorLetter(COLOR color);
 
+    
 
 
 };

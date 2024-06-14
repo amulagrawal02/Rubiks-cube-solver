@@ -1,6 +1,6 @@
-#include<bits/stdc++.h>
-#include<RubiksCube.h>
-using namespace std; 
+
+#include "RubiksCube.h"
+
 
 class RubiksCube3dArray : public RubiksCube
 {
@@ -24,4 +24,28 @@ class RubiksCube3dArray : public RubiksCube
             }
         }
     }
+
+    COLOR getColor(FACE fce, int row, int col) const override
+    { 
+
+        int faceIndex = (int)fce;
+        char color = cube[faceIndex][row][col];
+        switch (color)
+        {
+            case 'B':
+            return COLOR :: BLUE; 
+            case 'R':
+                return COLOR::RED;
+            case 'G':
+                return COLOR::GREEN;
+            case 'O':
+                return COLOR::ORANGE;
+            case 'Y':
+                return COLOR::YELLOW;
+            default:
+                return COLOR::WHITE;
+        }
+
+    }
+
 };
