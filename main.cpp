@@ -7,4 +7,15 @@ int main()
      RubiksCube3dArray obj;
      
      obj.printRubikCube();
+    
+       obj.L();
+      obj.printRubikCube();
+     
+      obj.U();
+    
+     obj.printRubikCube();
+
+
+     
+
 }

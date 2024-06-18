@@ -63,7 +63,9 @@ class RubiksCube{
 
     char getColorLetter(COLOR color);
 
-    
+    virtual RubiksCube & L() = 0;
+
+    virtual RubiksCube & U() = 0;
 
 
 };
