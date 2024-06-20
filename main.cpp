@@ -27,12 +27,32 @@ int main()
       obj.printRubikCube();
 
      
-     obj.U2();
+     obj.D();
      obj.printRubikCube();
+
+     obj.B();
+     obj.B2();
+
+     obj.Rprime();
+     obj.Bprime();
      
-     obj.R();
+     // obj.R();
     
-     obj.printRubikCube();
+      obj.printRubikCube();
+
+     // obj.Rprime();
+     // obj.printRubikCube();
+
+     // obj.Fprime();
+     // obj.printRubikCube();
+
+     // obj.D();
+     // obj.printRubikCube();
+     // obj.U();
+     // obj.printRubikCube();
+     // obj.Dprime();
+     // obj.printRubikCube();
+
 
 
      

@@ -83,5 +83,16 @@ class RubiksCube{
     virtual RubiksCube &Rprime() = 0;
     virtual RubiksCube &R2() = 0;
 
+    //down moves
+    virtual RubiksCube &D() = 0;
+    virtual RubiksCube &Dprime() = 0;
+    virtual RubiksCube &D2() = 0;
+
+    // back moves
+    virtual RubiksCube &B() = 0;
+    virtual RubiksCube &Bprime() = 0;
+    virtual RubiksCube &B2() = 0;
+    
+
 
 };

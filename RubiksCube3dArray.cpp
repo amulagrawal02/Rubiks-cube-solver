@@ -215,8 +215,6 @@ class RubiksCube3dArray : public RubiksCube
 
         for(int i = 0; i< 3; i++) stateSave[i] = cube[0][i][2];
 
-
-
         for(int i = 0; i < 3; i++) cube[0][i][2] = cube[2][i][2];
         for(int i = 0 ; i< 3; i++) cube[2][i][2] = cube[5][i][2];
         for(int i = 0 ; i< 3; i++) cube[5][i][2] = cube[4][2-i][0];
@@ -234,6 +232,60 @@ class RubiksCube3dArray : public RubiksCube
     RubiksCube &R2() override{
         this->R();
         this->R();
+        return *this;
+    }
+
+
+    RubiksCube &D(){
+        this->RotateFace(5);
+        char stateSave[3];
+        for(int i = 0; i< 3; i++)
+        {
+            stateSave[i] = cube[2][2][i];
+        }
+        for(int i = 0; i< 3; i++) cube[2][2][i] = cube[1][2][i];
+        for(int i = 0; i< 3; i++) cube[1][2][i] = cube[4][2][i];
+        for(int i = 0; i< 3; i++) cube[4][2][i] = cube[3][2][i];
+        for(int i = 0; i< 3; i++) cube[3][2][i] = stateSave[i];
+        
+    }
+    RubiksCube &Dprime() {
+        this->D();
+        this->D();
+        this->D();
+        return *this;
+    }
+    RubiksCube &D2() {
+        this->D();
+        this->D();
+        return *this;
+    }
+
+    RubiksCube &B(){
+
+         this->RotateFace(4);
+
+        char saveState[3] = {};
+        for (int i = 0; i < 3; i++) saveState[i] = cube[0][0][2 - i];
+        for (int i = 0; i < 3; i++) cube[0][0][2 - i] = cube[3][2 - i][2];
+        for (int i = 0; i < 3; i++) cube[3][2 - i][2] = cube[5][2][i];
+        for (int i = 0; i < 3; i++) cube[5][2][i] = cube[1][i][0];
+        for (int i = 0; i < 3; i++) cube[1][i][0] = saveState[i];
+
+        return *this;
+
+
+
+    }
+    RubiksCube &Bprime(){
+        this->B();
+        this->B();
+        this->B();
+        return *this;
+    }
+    RubiksCube &B2(){
+        this->B();
+        this->B();
         return *this;
     }
 
