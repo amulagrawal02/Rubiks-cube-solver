@@ -63,9 +63,25 @@ class RubiksCube{
 
     char getColorLetter(COLOR color);
 
+    // left moves
     virtual RubiksCube & L() = 0;
+    virtual RubiksCube &Lprime() = 0;
+    virtual RubiksCube &L2() = 0;
 
+    // upper moves
     virtual RubiksCube & U() = 0;
+    virtual RubiksCube &Uprime() = 0;
+    virtual RubiksCube &U2() = 0;
+
+    // front moves
+    virtual RubiksCube &F() = 0;
+    virtual RubiksCube &Fprime() = 0;
+    virtual RubiksCube &F2() = 0;
+
+    // Right moves
+    virtual RubiksCube &R() = 0;
+    virtual RubiksCube &Rprime() = 0;
+    virtual RubiksCube &R2() = 0;
 
 
 };
