@@ -25,6 +25,24 @@ class RubiksCube3dArray : public RubiksCube
         }
     }
 
+    bool isSolve() const override
+    {
+        for(int i = 0; i< 6; i++)
+        {
+            for(int j = 0; j< 3; j++)
+            {
+                for(int k = 0; k< 3; k++)
+                {
+                    if(this->cube[i][j][k] == getColorLetter(COLOR(i))) continue;
+                    else{
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
     COLOR getColor(FACE fce, int row, int col) const override
     { 
 
@@ -290,48 +308,40 @@ class RubiksCube3dArray : public RubiksCube
     }
 
 
+    bool operator==(const RubiksCube3dArray &r1) const {
+            for (int i = 0; i < 6; i++) {
+                for (int j = 0; j < 3; j++) {
+                    for (int k = 0; k < 3; k++) {
+                        if (r1.cube[i][j][k] != cube[i][j][k]) return false;
+                    }
+                }
+            }
+            return true;
+        }
 
-    RubiksCube &randomSuffle()
-    {
-        int val = rand() % 5;
-
-        switch (val)
-        {
-        case 0: 
-            cout<<"L"<<endl;
-            this->L();
-            this->printRubikCube();
-            break;
-        
-        case 1: 
-            cout<<"L2"<<endl;
-            this->L2();
-            this->printRubikCube();
-            break;
-        case 2: 
-            cout<<"Lprime"<<endl;
-            this->Lprime();
-            this->printRubikCube();
-            break;
-        case 3: 
-            cout<<"U"<<endl;
-            this->U();
-            this->printRubikCube();
-            break;
-        
-        case 4: 
-            cout<<"U2"<<endl;
-            this->U2();
-            this->printRubikCube();            
-            break;
-        default: 
-            cout<<"Uprime"<<endl;
-            this->Uprime();
-            this->printRubikCube();
-            break;
-
+    RubiksCube3dArray &operator=(const RubiksCube3dArray &r1) {
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 3; j++) {
+                for (int k = 0; k < 3; k++) {
+                    cube[i][j][k] = r1.cube[i][j][k];
+                }
+            }
         }
         return *this;
+    }
+};
+
+struct Hash3d {
+    size_t operator()(const RubiksCube3dArray &r1) const {
+        string str = "";
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 3; j++) {
+                for (int k = 0; k < 3; k++) {
+                    str += r1.cube[i][j][k];
+                }
+            }
+        }
+        return hash<string>()(str);
     }
 
 };

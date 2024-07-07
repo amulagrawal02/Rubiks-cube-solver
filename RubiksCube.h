@@ -1,9 +1,13 @@
 // this is the generic class which contain the comman components of rubiks cube. 
 // despite of type of solver we use or type of model we use. 
 
+#ifndef RUBIKS_CUBE_SOLVER_RUBIKSCUBE_H
+#define RUBIKS_CUBE_SOLVER_RUBIKSCUBE_H
 
 #include<bits/stdc++.h>
 using namespace std; 
+
+
 
 class RubiksCube{
 
@@ -19,6 +23,8 @@ class RubiksCube{
         DOWN
     };
 
+    
+
 
     // class represnt all types of moves. 
     enum class MOVE{
@@ -29,6 +35,8 @@ class RubiksCube{
         F, FPRIME, F2,
         B, BPRIME, B2
     };
+    
+    static string getMove(MOVE ind);
 
     // class represnt all types of color. 
     enum class COLOR {
@@ -61,7 +69,19 @@ class RubiksCube{
 
     virtual COLOR getColor(FACE f, int row, int col)const = 0;
 
-    char getColorLetter(COLOR color);
+    static char getColorLetter(COLOR color);
+
+    // random suffle function 
+    vector<MOVE> randomShuffleCube(unsigned int times);
+
+    // for moves
+    RubiksCube &move(MOVE ind);
+
+    // for inverting the moves
+    RubiksCube &invert(MOVE ind);
+
+    virtual bool isSolve() const = 0; 
+
 
     // left moves
     virtual RubiksCube & L() = 0;
@@ -96,3 +116,6 @@ class RubiksCube{
 
 
 };
+
+
+#endif //RUBIKS_CUBE_SOLVER_RUBIKSCUBE_H

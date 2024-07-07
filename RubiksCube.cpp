@@ -21,6 +21,149 @@ char RubiksCube::getColorLetter(COLOR color) {
     }
 }
 
+
+string RubiksCube::getMove(MOVE ind) {
+    switch (ind) {
+        case MOVE::L:
+            return "L";
+        case MOVE::LPRIME:
+            return "L'";
+        case MOVE::L2:
+            return "L2";
+        case MOVE::R:
+            return "R";
+        case MOVE::RPRIME:
+            return "R'";
+        case MOVE::R2:
+            return "R2";
+        case MOVE::U:
+            return "U";
+        case MOVE::UPRIME:
+            return "U'";
+        case MOVE::U2:
+            return "U2";
+        case MOVE::D:
+            return "D";
+        case MOVE::DPRIME:
+            return "D'";
+        case MOVE::D2:
+            return "D2";
+        case MOVE::F:
+            return "F";
+        case MOVE::FPRIME:
+            return "F'";
+        case MOVE::F2:
+            return "F2";
+        case MOVE::B:
+            return "B";
+        case MOVE::BPRIME:
+            return "B'";
+        case MOVE::B2:
+            return "B2";
+    }
+}
+
+
+// action perfomed when someon called move(move)
+RubiksCube &RubiksCube::move(MOVE ind) {
+    switch (ind) {
+        case MOVE::L:
+            return this->L();
+        case MOVE::LPRIME:
+            return this->Lprime();
+        case MOVE::L2:
+            return this->L2();
+        case MOVE::R:
+            return this->R();
+        case MOVE::RPRIME:
+            return this->Rprime();
+        case MOVE::R2:
+            return this->R2();
+        case MOVE::U:
+            return this->U();
+        case MOVE::UPRIME:
+            return this->Uprime();
+        case MOVE::U2:
+            return this->U2();
+        case MOVE::D:
+            return this->D();
+        case MOVE::DPRIME:
+            return this->Dprime();
+        case MOVE::D2:
+            return this->D2();
+        case MOVE::F:
+            return this->F();
+        case MOVE::FPRIME:
+            return this->Fprime();
+        case MOVE::F2:
+            return this->F2();
+        case MOVE::B:
+            return this->B();
+        case MOVE::BPRIME:
+            return this->Bprime();
+        case MOVE::B2:
+            return this->B2();
+    }
+}
+
+
+// action perfomed when someon called invert(move)
+RubiksCube &RubiksCube::invert(MOVE ind) {
+    switch (ind) {
+        case MOVE::L:
+            return this->Lprime();
+        case MOVE::LPRIME:
+            return this->L();
+        case MOVE::L2:
+            return this->L2();
+        case MOVE::R:
+            return this->Rprime();
+        case MOVE::RPRIME:
+            return this->R();
+        case MOVE::R2:
+            return this->R2();
+        case MOVE::U:
+            return this->Uprime();
+        case MOVE::UPRIME:
+            return this->U();
+        case MOVE::U2:
+            return this->U2();
+        case MOVE::D:
+            return this->Dprime();
+        case MOVE::DPRIME:
+            return this->D();
+        case MOVE::D2:
+            return this->D2();
+        case MOVE::F:
+            return this->Fprime();
+        case MOVE::FPRIME:
+            return this->F();
+        case MOVE::F2:
+            return this->F2();
+        case MOVE::B:
+            return this->Bprime();
+        case MOVE::BPRIME:
+            return this->B();
+        case MOVE::B2:
+            return this->B2();
+    }
+}
+
+ // randomShuffleCube function 
+
+ vector<RubiksCube::MOVE> RubiksCube::randomShuffleCube(unsigned int times) 
+ {
+     vector<MOVE> moves_performed;
+    srand(time(0));
+    for (unsigned int i = 0; i < times; i++) {
+        unsigned int selectMove = (rand() % 18);
+        moves_performed.push_back(MOVE(selectMove));
+        this->move(MOVE(selectMove));
+    }
+    return moves_performed;
+ }
+
+
 /*
     * Print the Rubik Cube in Planar format.
      *
