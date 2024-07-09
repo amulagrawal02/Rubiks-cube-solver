@@ -4,6 +4,7 @@
 #include "./Solver/DFSSolver.h"
 #include "./Solver/BFSSolver.h"
 #include "./Solver/IDDFSSolver.h"
+#include "./Solver/IDAstar.h"
 
 using namespace std; 
 int main()
@@ -65,7 +66,7 @@ int main()
 //      obj.printRubikCube();
 
      // random shuffle 
-     vector<RubiksCube :: MOVE> randomMove =  cube1.randomShuffleCube(7);
+     vector<RubiksCube :: MOVE> randomMove =  cube1.randomShuffleCube(9);
 
      cube1.printRubikCube();
      cout<<"Random moves to solve the cube"<<endl;
@@ -77,12 +78,12 @@ int main()
     // DFSSolver<RubiksCube3dArray, Hash3d> dfsSolver(cube1, 6);
     // BFSSolver<RubiksCube3dArray, Hash3d> bfsSolver(cube1);
      
-     IDDFSSolver<RubiksCube3dArray, Hash3d> iddfsSolver(cube1,8);
+     IDDFSSolver<RubiksCube3dArray, Hash3d> IDAstar (cube1);
 
 
-     vector<RubiksCube :: MOVE> movesToSolve = iddfsSolver.solve();
+     vector<RubiksCube :: MOVE> movesToSolve = IDAstar.solve();
 
-     iddfsSolver.rubikscube.printRubikCube();
+     IDAstar.rubikscube.printRubikCube();
      cout<<"After solve moves to solve the cube"<<endl;
      for(auto mv : movesToSolve)
      {
